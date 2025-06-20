@@ -23,6 +23,31 @@ Route::get('/tasks/{id}', function ($id) {
     ]);
 })->whereNumber('id')->name('tasks.show');
 
+// Edit task
+Route::get('/tasks/{id}/edit', function ($id) {
+    return view('tasks.edit', [
+        'task' => Task::findOrFail($id)
+    ]);
+})->whereNumber('id')->name('tasks.edit');
+
+Route::put('/tasks/{id}/edit', function ($id, Request $request) {
+
+    $data = $request->validate([
+        'title'             => 'required|max:255',
+        'description'       => 'required',
+        'long_description'  => 'required'
+    ]);
+
+    $task                   = Task::findOrFail($id);
+    $task->title            = $data['title'];
+    $task->description      = $data['description'];
+    $task->long_description = $data['long_description'];
+    $task->save();
+
+    return redirect()->route('tasks.show', ['id' => $task->id])
+        ->with('success', 'Task updated successfuly!');
+})->name('tasks.update');
+
 // Create task
 Route::get('/tasks/create', function () {
     return view('tasks.create');
@@ -44,7 +69,6 @@ Route::post('/tasks/create', function (Request $request) {
 
     return redirect()->route('tasks.show', ['id' => $task->id])
         ->with('success', 'Task created successfuly!');
-        
 })->name('tasks.store');
 
 // Toggle task status
@@ -52,7 +76,7 @@ Route::any('/tasks/{id}/toggle', function ($id) {
     $task = Task::findOrFail($id);
     $task->completed = !$task->completed;
     $task->save();
-    return redirect()->route('tasks.show', ['id'=> $task->id]);
+    return redirect()->route('tasks.show', ['id' => $task->id]);
 })->name('tasks.toggle');
 
 // 404

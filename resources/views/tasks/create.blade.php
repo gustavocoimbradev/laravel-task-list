@@ -3,7 +3,7 @@
 @section('title', 'Add task')
 
 @section('content')
-    <form action="{{ route('tasks.store') }}" method="post" class="flex flex-col gap-3">
+    <form action="{{ route('tasks.store') }}" method="POST" class="flex flex-col gap-3">
         @csrf
         <fieldset>
             <label for="title" class="block mb-2 text-slate-500">Title</label>
