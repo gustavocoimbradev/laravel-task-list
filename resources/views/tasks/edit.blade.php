@@ -3,7 +3,7 @@
 @section('title', 'Edit task')
 
 @section('content')
-    <form action="{{ route('tasks.update', ['id' => $task->id]) }}" method="POST" class="flex flex-col gap-3">
+    <form action="{{ route('tasks.update', ['task' => $task->id]) }}" method="POST" class="flex flex-col gap-3">
         @csrf
         @method('PUT')
         <fieldset>
@@ -34,7 +34,7 @@
             <button type="submit"
                 class="bg-blue-400 px-5 py-3 text-white font-bold w-full block cursor-pointer transition-all ease-in-out duration-300 hover:bg-blue-500">Save
                 task</button>
-            <a href="{{ route('tasks.index') }}"
+            <a href="{{ route('tasks.show', ['task' => $task->id]) }}"
                 class="bg-slate-400 px-5 py-3 text-white font-bold w-full block text-center cursor-pointer transition-all ease-in-out duration-300 hover:bg-slate-500">Cancel</a>
         </fieldset>
     </form>

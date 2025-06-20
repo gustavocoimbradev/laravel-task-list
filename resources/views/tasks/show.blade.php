@@ -24,7 +24,7 @@
         <a class="bg-purple-400 hover:bg-purple-500 px-5 py-3 text-white font-bold w-full block cursor-pointer transition-all ease-in-out duration-300 text-center"
             href="{{ route('tasks.edit', $task->id) }}">Edit task</a>
         <a class="{{ $task->completed ? 'bg-red-400' : 'bg-blue-400'}} px-5 py-3 text-white font-bold w-full block cursor-pointer transition-all ease-in-out duration-300 {{ $task->completed ? 'hover:bg-red-500' : 'hover:bg-blue-500'}} text-center"
-            href="{{ route('tasks.toggle', $task->id) }}">{{ $task->completed ? 'Mark as not done' : 'Mark as done'}}</a>
+            href="{{ route('tasks.toggle', $task) }}">{{ $task->completed ? 'Mark as not done' : 'Mark as done'}}</a>
         <a class="bg-slate-400 px-5 py-3 text-white font-bold w-full block text-center cursor-pointer transition-all ease-in-out duration-300 hover:bg-slate-500"
             href="{{ route('tasks.index') }}">Back to home</a>
     </div>
