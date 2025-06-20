@@ -23,4 +23,8 @@
         @endforelse
     </div>
 
+    @if ($tasks->count())
+        {{ $tasks->links() }}
+    @endif
+
 @endsection

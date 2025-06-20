@@ -13,7 +13,7 @@ Route::get('/', function () {
 // All tasks
 Route::get('/tasks', function () {
     return view('tasks.index', [
-        'tasks' => Task::select('id', 'title', 'completed')->orderBy('completed', 'asc')->orderBy('id', 'desc')->get()
+        'tasks' => Task::select('id', 'title', 'completed')->orderBy('completed', 'asc')->orderBy('id', 'desc')->paginate(7)
     ]);
 })->name('tasks.index');
 
