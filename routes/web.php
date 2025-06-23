@@ -48,11 +48,3 @@ Route::fallback(function () {
     return 'Página não encontrada!';
 });
 
-// Migrate
-Route::get('/run-migrations/{secret}', function ($secret) {
-    if ($secret !== env('MIGRATE_SECRET')) {
-        abort(403, 'Não autorizado');
-    }
-    Artisan::call('migrate', ['--force' => true]);
-    return 'Migrations executadas com sucesso!';
-})->withoutMiddleware([\Illuminate\Session\Middleware\StartSession::class]);
