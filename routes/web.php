@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 // Root
@@ -51,7 +52,7 @@ Route::fallback(function () {
 Route::get('/run-migrations/{secret}', function ($secret) {
     if ($secret !== env('MIGRATE_SECRET')) {
         abort(403, 'Não autorizado');
-    } 
+    }
     Artisan::call('migrate', ['--force' => true]);
     return 'Migrations executadas com sucesso!';
-});
+})->withoutMiddleware([\Illuminate\Session\Middleware\StartSession::class]);
