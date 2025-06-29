@@ -2,7 +2,7 @@
 
 ## About the project
 
-A simple to-do list project built with Laravel. Created for portfolio purposes to practice Laravel basics and CRUD operations.
+This is a simple to-do list project built with Laravel. Created for portfolio purposes to practice Laravel basics and CRUD operations.
 
 #### Features
 
