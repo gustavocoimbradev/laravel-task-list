@@ -30,7 +30,7 @@ This is a simple to-do list project built with Laravel. Created for portfolio pu
 
 #### Models
 
-- [app/Http/Models/Task.php](app/Http/Models/Task.php) - Task model  
+- [app/Models/Task.php](app/Models/Task.php) - Task model  
 
 #### Controllers
 
